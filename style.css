@@ -1,0 +1,100 @@
+*
+{
+    box-sizing: border-box;
+}
+body
+{
+    background-image: url("bg.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    margin: 0px;
+    padding: 0px;
+}
+#cont
+{
+    height: 100vh;
+    cursor: crosshair;
+} 
+#balloon
+{
+    position:relative ;
+    top: 100px;
+    left: 100px;
+    border-radius: 100px;
+    width: 70px;
+    height: 70px;
+}
+.header
+{
+    height: 23vh;
+    background-color: black;
+    color: white;
+    padding: 35px;
+    padding-left: 30px;
+    margin: 30px;
+    border-radius: 30px;
+}
+.startbtn
+{
+    width: 200px;
+    height: 8vh;
+    padding: 5px 10px ;
+    background-color: black;
+    color: white;
+    font-size: 30px;
+    font-weight:700;
+    border-radius: 30px;
+    margin: 160px 200px;
+}
+button:hover
+{
+    background-color: white;
+    color: black;
+    height: 9vh;
+}
+#lifeLine img{
+    width: 25px;
+    height: 25px;
+}
+.plheader
+{
+    text-align: center;
+    margin-top: 10px;
+    font-size: 30px;
+    font-weight: 600;
+}
+
+/* Base */
+
+#effect {
+    margin-top: 150px;
+    margin-left: 300px;
+  position: relative;
+  color: hsl(0, 100%, 1%);
+  font-weight: 600;
+  font-size: 100px;
+  font-family: "Anonymous Pro", monospace;
+  letter-spacing: 15px;
+  overflow: hidden;
+  border-right: 2px solid hsl(0, 100%, 1%);
+  white-space: nowrap;
+  animation: typewriter 1s steps(44)  1 normal both,
+    blinkTextCursor 500ms infinite;
+}
+
+@keyframes typewriter {
+  from {
+    width: 0;
+  }
+  to {
+    width: 700px;
+  }
+}
+@keyframes blinkTextCursor {
+  from {
+    border-right-color: hsl(0, 100%, 1%);
+  }
+  to {
+    border-right-color: transparent;
+  }
+}

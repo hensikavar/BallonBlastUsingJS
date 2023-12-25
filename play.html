@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.12/dist/sweetalert2.min.css"
+        integrity="sha256-7jUS+MWeqkFdmW9ozkZ7mPagz+QmMbsBlt+Q3MsE+FU=" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+    
+</head>
+
+<body onselectstart="return false" oncut="return false" oncopy="return false" onpaste="return false" ondrag="return false" ondrop="return false" >
+    <div class="container" onclick="life()" id="cont">
+        <div class="row plheader">
+            <div class="col">
+                <h1>Blast The Balloon</h1>
+            </div>
+        </div>
+        <div class="row plheader">
+            <div class="col-6" id="score">Your Score : 0 </div>
+            <div class="col-6" id="lifeLine">
+                <img src="heart.svg">
+                <img src="heart.svg">
+                <img src="heart.svg">
+                <img src="heart.svg">
+                <img src="heart.svg">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <img src="b2-PhotoRoom.png" id="balloon" onclick="blast()">
+                <audio src="boom.wav" id="boomsound"></audio>
+            </div>
+        </div>
+    </div>
+
+</body>
+<script>
+
+    score = document.getElementById("score");
+    balloon = document.getElementById("balloon");
+    ll=document.getElementById("lifeLine")
+    count = 0;
+    lifeline=5;
+
+    function life()
+    {
+        lifeline--;
+        if(lifeline==4)
+        {
+            ll.innerHTML='<img src="heart.svg"> <img src="heart.svg"> <img src="heart.svg"> <img src="heart.svg">'
+        }
+        else if(lifeline==3)
+        {
+            ll.innerHTML='<img src="heart.svg"> <img src="heart.svg"> <img src="heart.svg"> '
+        }
+        else if(lifeline==2)
+        {
+            ll.innerHTML='<img src="heart.svg"> <img src="heart.svg"> '
+        }
+        else if(lifeline==1)
+        {
+            ll.innerHTML='<img src="heart.svg">'
+        }
+        else if (lifeline==0){
+            ll.innerHTML=''
+            gameover();
+        }
+    }
+
+    function gameover()
+    {
+        clearInterval(changeinterval);
+        balloon.src = " ";
+        Swal.fire({
+                title: "Game Over !!",
+                icon: 'error',
+                text: 'Try it Again',
+                confirmButtonText: '<a href="play.html" class="text-white" style="text-decoration-line:none;">Try Again</a>',
+                html: '<b>Your Score : '+count+'</b><br><br><a href="index.html" style="color:red;text-decoration-line:none;">Back to Home</a>'
+                
+            })
+    }
+    
+
+    function blast() {
+        count+=5;
+        lifeline++;
+        document.getElementById("balloon").src = "boom.png";
+        document.getElementById("boomsound").play();
+        score.innerHTML = "Your Score : " + count;
+    }
+
+
+    function changePosition() {
+        x = Math.ceil(Math.random() * 1200);
+        y = Math.ceil(Math.random() * 500);
+
+        balloon.style.left = x + "px"
+        balloon.style.top = y + "px"
+        balloon.src = "b2-PhotoRoom.png"
+    }
+    changeinterval=setInterval(changePosition,1500);
+
+</script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
+    crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.12/dist/sweetalert2.all.min.js"
+    integrity="sha256-2Dbg51yxfa7qZ8CSKqsNxHtph8UHdgbzxXF9ANtyJHo=" crossorigin="anonymous"></script>
+
+</html>
